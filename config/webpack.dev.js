@@ -14,6 +14,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
 /**
  * Webpack Constants
@@ -92,6 +93,7 @@ module.exports = function (options) {
     module: {
 
       rules: [
+       {test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
        {
          test: /\.ts$/,
          use: [
@@ -132,6 +134,14 @@ module.exports = function (options) {
     },
 
     plugins: [
+
+      new ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery",
+          "window.jQuery": "jquery",
+          Hammer: "hammerjs/hammer",
+          Materialize: "materialize-css"
+      }),
 
       /**
        * Plugin: DefinePlugin
