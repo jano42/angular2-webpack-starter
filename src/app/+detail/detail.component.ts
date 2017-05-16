@@ -20,7 +20,8 @@ console.log('`Detail` component loaded asynchronously');
       Child Detail
     </a>
 
-    <a materialize="tooltip" class="btn tooltipped" data-position="bottom" data-delay="10" data-tooltip="I am tooltip">Hover me!</a>
+    <a materialize="tooltip" class="btn tooltipped" 
+       data-position="bottom" data-delay="10" data-tooltip="I am tooltip">Hover me!</a>
 
     <div class="row">
         <div class="input-field col s6">
@@ -35,7 +36,9 @@ console.log('`Detail` component loaded asynchronously');
 
   <!-- toast -->
   <a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast 1!</a>
-  <a class="btn" (click)="triggerToast()" materialize [materializeParams]="['I am also a toast',4000]" [materializeActions]="globalActions">Toast 2!</a>    
+  <a class="btn" (click)="triggerToast()" materialize 
+      [materializeParams]="['I am also a toast',4000]" 
+      [materializeActions]="globalActions">Toast 2!</a>    
 
   </span>
   <router-outlet></router-outlet>
@@ -45,7 +48,8 @@ export class DetailComponent implements OnInit {
     @Input() public initialValue: string;
     @Output() public modelChange = new EventEmitter();
     public options: Option[] = [];
-    public  globalActions = new EventEmitter<any>(); // because MaterializeAction is not available, bypass this sample using any
+    // because MaterializeAction is not available, bypass this sample using any
+    public  globalActions = new EventEmitter<any>();
 //    public  globalActions = new EventEmitter<string | MaterializeAction>();
     public change(newValue) {
       Materialize.toast('child select: ' + newValue, 2000);
