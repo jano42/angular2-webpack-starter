@@ -45,7 +45,8 @@ export class DetailComponent implements OnInit {
     @Input() public initialValue: string;
     @Output() public modelChange = new EventEmitter();
     public options: Option[] = [];
-    public  globalActions = new EventEmitter<string | MaterializeAction>();
+    public  globalActions = new EventEmitter<any>(); // because MaterializeAction is not available, bypass this sample using any
+//    public  globalActions = new EventEmitter<string | MaterializeAction>();
     public change(newValue) {
       Materialize.toast('child select: ' + newValue, 2000);
       this.modelChange.emit(newValue);
