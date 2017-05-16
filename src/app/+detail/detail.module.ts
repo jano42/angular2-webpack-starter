@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { routes } from './detail.routes';
 import { DetailComponent } from './detail.component';
+import { SharedModule } from '../shared/shared.module';
 
 console.log('`Detail` bundle loaded asynchronously');
 
@@ -17,6 +18,7 @@ console.log('`Detail` bundle loaded asynchronously');
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
+    SharedModule
   ],
 })
 export class DetailModule {
